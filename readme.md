@@ -9,3 +9,5 @@ sudo systemctl daemon-reload
 sudo systemctl enable teamcity.service
 
 sudo systemctl start teamcity.service
+
+2.
