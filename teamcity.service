@@ -1,0 +1,17 @@
+[Unit]
+Description=TeamCity Server and Default Agent
+After=network.target
+
+[Service]
+Type=forking
+User=teamcity
+Group=teamcity
+ExecStartPre=/bin/chmod -R 755 /home/teamcity/.BuildServer
+ExecStartPre=/bin/chown -R teamcity:teamcity /home/teamcity/.BuildServer
+ExecStart=/opt/TeamCity/bin/runAll.sh start
+ExecStop=/opt/TeamCity/bin/runAll.sh stop
+PIDFile=/opt/TeamCity/logs/teamcity.pid
+WorkingDirectory=/opt/TeamCity/bin
+
+[Install]
+WantedBy=multi-user.target
